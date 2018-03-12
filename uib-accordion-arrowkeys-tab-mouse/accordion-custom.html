@@ -1,0 +1,44 @@
+<!doctype html>
+<html ng-app="vinzApp">
+
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-animate.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-sanitize.js"></script>
+    <script src="https://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-2.4.0.js"></script>
+    <link href="https://netdna.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <script src="accordion-custom.directive.js"></script>
+    <link href="accordion-custom.css" rel="stylesheet">
+</head>
+
+<body>
+    <div ng-controller="AccordionCustom">
+        <uib-accordion close-others="oneAtATime">
+            <div uib-accordion-group ng-repeat="group in groups" class="panel-default" is-open="isOpen" tabindex="{{$index}}" 
+            arrownavigation template-url="group-template.html">
+                <uib-accordion-heading>
+                    <span>{{group.title}}</span>
+                    <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': isOpen, 'glyphicon-chevron-right': !isOpen}"></i>
+                </uib-accordion-heading>
+                <div ng-if="isOpen">{{group.content}}</div>
+            </div>
+        </uib-accordion>
+    </div>
+
+    <script type="text/ng-template" id="group-template.html">
+        <div role="tab" id="{{::headingId}}" aria-selected="{{isOpen}}" class="panel-heading" ng-keypress="toggleOpen($event)">
+            <h4 class="panel-title">
+                <a role="button" data-toggle="collapse" href="" aria-expanded="{{isOpen}}" aria-controls="{{::panelId}}" tabindex="0" class="accordion-toggle Accordion-trigger"
+                    ng-click="toggleOpen()" uib-accordion-transclude="heading" ng-disabled="isDisabled" uib-tabindex-toggle>
+                        <span uib-accordion-header ng-class="{'text-muted': isDisabled}">{{heading}}</span>
+                    </a>
+            </h4>
+        </div>
+        <div id="{{::panelId}}" aria-labelledby="{{::headingId}}" aria-hidden="{{!isOpen}}" role="tabpanel" class="panel-collapse collapse"
+            uib-collapse="!isOpen">
+            <div class="panel-body" ng-transclude></div>
+        </div>
+    </script>
+</body>
+
+</html>

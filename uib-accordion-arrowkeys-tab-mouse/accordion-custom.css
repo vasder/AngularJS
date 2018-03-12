@@ -1,0 +1,59 @@
+a{
+    display: block;
+}
+
+h4{
+    display: block;
+}
+
+.panel{
+    margin-bottom: 6px;
+}
+.panel-heading {
+    /* padding: 10px 15px; */
+    border-bottom: 1px solid transparent;
+    border-radius: 6px;
+}
+
+.Accordion-trigger {
+    background: none;
+    border: 0;
+    display: block;
+    margin: 0;
+    position: relative;
+    text-align: left;
+    width: 98%;
+    padding: 5px;
+}
+
+.Accordion-trigger > span{
+    display: block;
+    padding: 0;
+    margin: 0;
+}
+
+.Accordion-trigger:focus,
+.Accordion-trigger:hover {
+    background: hsl(0, 0%, 93%);
+}
+
+.Accordion-icon {
+    border: solid hsl(0, 0%, 62%);
+    border-width: 0 2px 2px 0;
+    height: .5rem;
+    pointer-events: none;
+    position: absolute;
+    right: 1.5em;
+    top: 50%;
+    transform: translateY(-60%) rotate(45deg);
+    width: .5rem;
+}
+
+.Accordion-trigger:focus .Accordion-icon,
+.Accordion-trigger:hover .Accordion-icon {
+    border-color: hsl(0, 0%, 13%);
+}
+
+.Accordion-trigger[aria-expanded="true"] .Accordion-icon {
+    transform: translateY(-50%) rotate(-135deg);
+}
